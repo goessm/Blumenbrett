@@ -32,11 +32,10 @@ public class Overlay : MonoBehaviour
         Card.OnCardClicked -= SelectCard;
     }
 
-    void OnMouseOver()
+    public void ClickDraw()
     {
-        if (Input.GetMouseButtonDown(0) && !isInSelection)
+        if (!isInSelection)
         {
-            Debug.Log("clicked draw");
             isInSelection = true;
             PlaceCards(deck.DrawCards(5));
         }
