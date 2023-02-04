@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public GameObject rootPrefab;
+    public GameObject highlight;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +14,15 @@ public class Card : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnMouseOver()
+    {
+        highlight.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        highlight.SetActive(false);
     }
 }
