@@ -1,15 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9153749021113748840
+--- !u!1001 &3498346531063720253
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1202177764291627966, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 27ad9809b9d50af4384e2e5ed4355b88, type: 3}
     - target: {fileID: 1202177764712057352, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_text
-      value: Grows root randomly on any field if there isn't a flower.
+      value: Grows root randomly vertically next to it if there isn't a flower.
       objectReference: {fileID: 0}
     - target: {fileID: 1202177764712057352, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_fontSize
@@ -61,15 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202177765213234358, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_Name
-      value: Red
+      value: Yellow
       objectReference: {fileID: 0}
     - target: {fileID: 1202177765601779885, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_text
-      value: Red root
+      value: Yellow root
       objectReference: {fileID: 0}
     - target: {fileID: 1202177765601779885, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_fontSize
-      value: 2.2
+      value: 1.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
