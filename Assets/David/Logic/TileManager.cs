@@ -5,6 +5,17 @@ using UnityEngine.Tilemaps;
 
 public class TileManager : MonoBehaviour
 {
+    [SerializeField]
+    RootManager rootManager;
+
+    [SerializeField]
+    FlowerManager flowerManager;
+
+    [SerializeField]
+    Tilemap rootTilemap;
+    
+    [SerializeField]
+    Board board = new Board();
 
     public static TileManager Instance { get; private set; }
     private void Awake() 
@@ -16,81 +27,37 @@ public class TileManager : MonoBehaviour
         else 
         { 
             Instance = this;
-            InitRootBases();
-            InitBoard();
         } 
     }
 
-    private void InitRootBases()
-    {
-        rootBases = new Dictionary<RootType, RootBaseData>();
-        foreach(RootBaseData rootBase in rootBaseList)
-        {
-            rootBases[rootBase.rootType] = rootBase;
-        }
-
-    }
-
-    private void InitBoard()
-    {
-        for (int i = 0; i < BoardWidth; i++)
-        {
-            for (int j = 0; j < BoardLength; j++)
-            {
-                board.Add(new Vector2Int(i, j), new TileData());
-            }
-        }
-    }
-
-    public const int BoardWidth = 4;
-    public const int BoardLength = 4;
-
-    [SerializeField]
-    RootBaseData[] rootBaseList;
-    Dictionary<RootType, RootBaseData> rootBases;
-
-    [SerializeField]
-    TileBase[] rootTiles;
-
-    [SerializeField]
-    Tilemap rootTilemap;
-
-    [SerializeField]
-    Dictionary<Vector2Int, TileData> board = new Dictionary<Vector2Int, TileData>();
-
-    public bool IsInBounds(Vector2Int pos)
-    {
-        return board.ContainsKey(pos);
-    }
-    public RootData GetDefaultRootData(RootType type)
-    {
-        return new RootData(rootBases[type]);
-    }
     public bool PlantRoot(RootType type, Vector2Int pos, bool automatic = false)
     {
         Debug.Log($"Trying to plant {type} at {pos}");
-        if (!board.ContainsKey(pos)) return false;
 
-        TileData tileData = board[pos];
+        if (!board.IsInBounds(pos)) return false;
 
-        if (tileData.root != null)
-        {
-            Debug.Log("Tried to plant root where root already exists!");
-            return false;
-        }
-        RootData rootData = GetDefaultRootData(type);
-        tileData.root = rootData;
-        rootTilemap.SetTile((Vector3Int) pos, rootData.rootTile);
+        RootData rootData = rootManager.GetRootInfo(type)?.GetDefaultRootData();
+        board.SetRootAt(pos, rootData);
+        RedrawTilemap();
         return true;
 
+    }
+
+    private void RedrawTilemap()
+    {
+        foreach(Vector2Int pos in board.board.Keys)
+        {
+            TileBase rootTile = board.GetRootAt(pos)?.rootTile;
+            if (!rootTile) continue;
+            rootTilemap.SetTile((Vector3Int) pos, rootTile);
+        }
     }
 
     public void SpreadRoots() {
         List<GrowthResult> growthResults = new();
 
-        foreach(Vector2Int pos in board.Keys)
+        foreach(Vector2Int pos in board.board.Keys)
         {
-            TileData tileData = board[pos];
             GrowAttempt(pos, ref growthResults);
         }
 
@@ -102,24 +69,25 @@ public class TileManager : MonoBehaviour
 
     public void GrowFlowers()
     {
-        foreach(Vector2Int pos in board.Keys)
+        foreach(Vector2Int pos in board.board.Keys)
         {
-            TileData tileData = board[pos];
-
+            RootData root = board.GetRootAt(pos);
+            if (root == null) continue;
+            FlowerType flowerType = root.flowerType;
+            board.SetFlowerAt(pos, flowerManager.GetFlowerInfo(flowerType).GetDefaultFlowerData());
         }
     }
 
     private void GrowAttempt(Vector2Int pos, ref List<GrowthResult> growthResults)
     {
         //Debug.Log($"Growth attempt of {rootType} at {pos}");
-        if (!IsInBounds(pos))
+        if (!board.IsInBounds(pos))
         {
             Debug.Log($"Error in growth attempt. Pos {pos} out of bounds.");
             return;
         }
 
-        TileData tileData = board[pos];
-        RootData rootData = board[pos].root;
+        RootData rootData = board.GetRootAt(pos);
 
         if (rootData == null)
         {
@@ -139,9 +107,9 @@ public class TileManager : MonoBehaviour
         if (spreadDirections.Length == 0) return;
         Vector2Int growDir = spreadDirections[Random.Range(0, spreadDirections.Length)];
         Vector2Int targetPos = pos + growDir;
-        if (!IsInBounds(targetPos)) return;
+        if (!board.IsInBounds(targetPos)) return;
         Debug.Log($"Growing root {rootData.rootType}from {pos} to {targetPos}");
-        if (board[targetPos].root == null)
+        if (board.GetRootAt(targetPos) == null)
         {
             // No fusion
             GrowthResult result = new();
@@ -150,7 +118,7 @@ public class TileManager : MonoBehaviour
             growthResults.Add(result);
             return;
         }
-        RootType targetRoot = board[targetPos].root.rootType;
+        RootType targetRoot = board.GetRootAt(targetPos).rootType;
         FuseRoots(targetPos, rootData, targetRoot, ref growthResults);
     }
 
@@ -176,16 +144,4 @@ public class GrowthResult
 {
     public Vector2Int pos;
     public RootType type;
-}
-
-public class TileData
-{
-    public Dictionary<RootType, RootData> roots;
-    public RootData root;
-
-    public TileData()
-    {
-        roots = new Dictionary<RootType, RootData>();
-    }
-
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb2530aa625e2942b6128e639870d5c, type: 3}
+  m_Name: PurpleFlower
+  m_EditorClassIdentifier: 
+  flowerType: 4
+  flowerTile: {fileID: 11400000, guid: 49b0de641e2b3eb4081e9aeea9f6b9b5, type: 2}
+  value: 3
