@@ -33,8 +33,13 @@ public class InputHandler : MonoBehaviour
             Tilemap tilemap = GameObject.Find("Root Map").GetComponent<Tilemap>();
             var tilePos = tilemap.WorldToCell(Worldpos);
             //Debug.Log(tilePos);
-            
-            TileManager.Instance.PlantRoot(RootType.Yellow, (Vector2Int) tilePos);
+            RootType rootToPlant = RootType.Yellow;
+            if (Random.Range(0f, 1f) > 0.5)
+            {
+                rootToPlant = RootType.Green;
+                Debug.Log("GREEN");
+            }
+            TileManager.Instance.PlantRoot(rootToPlant, (Vector2Int) tilePos);
             TileManager.Instance.SpreadRoots();
         }
     }

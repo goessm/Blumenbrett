@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e278806996187b419b9c6a14c6f6b8e, type: 3}
-  m_Name: Yellow
+  m_Name: YellowRoot
   m_EditorClassIdentifier: 
   rootType: 0
   rootTile: {fileID: 11400000, guid: 4e2048f5326d2c34e9b364d844f75327, type: 2}
-  spreadChance: 0
+  flowerType: 0
+  spreadChance: 0.11
   spreadDirections:
-  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  fusions:
+  - FusionPartner: 1
+    Result: 2
   maxAge: 0
