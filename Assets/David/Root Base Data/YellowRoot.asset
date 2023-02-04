@@ -15,7 +15,7 @@ MonoBehaviour:
   rootType: 0
   rootTile: {fileID: 11400000, guid: 4e2048f5326d2c34e9b364d844f75327, type: 2}
   flowerType: 0
-  spreadChance: 0.11
+  spreadChance: 0.5
   spreadDirections:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
