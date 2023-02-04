@@ -5,17 +5,41 @@ using UnityEngine;
 public class Overlay : MonoBehaviour
 {
     public GameObject[] positions;
+    public Deck deck;
+    private bool isInSelection;
 
     // Start is called before the first frame update
     void Start()
     {
         ClearCards();
+        isInSelection = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void OnEnable()
+    {
+        Card.OnCardClicked += SelectCard;
+    }
+
+
+    void OnDisable()
+    {
+        Card.OnCardClicked -= SelectCard;
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && !isInSelection)
+        {
+            Debug.Log("clicked draw");
+            isInSelection = true;
+            PlaceCards(deck.DrawCards(5));
+        }
     }
 
     public void ClearCards()
@@ -35,5 +59,11 @@ public class Overlay : MonoBehaviour
         {
             Instantiate(cards[i], positions[i].transform);
         }
+    }
+
+    void SelectCard()
+    {
+        ClearCards();
+        isInSelection = false;
     }
 }
