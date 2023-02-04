@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YellowRoot
   m_EditorClassIdentifier: 
   rootType: 0
-  rootTile: {fileID: 11400000, guid: 3a720ecaff3213140b95fd01d4424357, type: 2}
+  rootTile: {fileID: 11400000, guid: f347c63e0d76a4140bdcff040f2fb45b, type: 2}
   flowerType: 0
   spreadChance: 0.5
   spreadDirections:

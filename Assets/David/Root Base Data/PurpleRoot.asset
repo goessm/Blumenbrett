@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PurpleRoot
   m_EditorClassIdentifier: 
   rootType: 3
-  rootTile: {fileID: 11400000, guid: 471a9f49a37e1954ab2141029c8167e3, type: 2}
-  flowerType: 4
+  rootTile: {fileID: 11400000, guid: 62c83a70e1e96c14ba9afa933df30b50, type: 2}
+  flowerType: 3
   spreadChance: 0
   spreadDirections: []
   fusions: []
