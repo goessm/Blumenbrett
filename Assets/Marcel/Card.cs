@@ -19,6 +19,10 @@ public class Card : MonoBehaviour
     void OnMouseOver()
     {
         highlight.SetActive(true);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("clicked");
+        }
     }
 
     void OnMouseExit()
