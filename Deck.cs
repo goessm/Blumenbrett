@@ -31,7 +31,7 @@ public class Deck : MonoBehaviour
         Shuffle(deck);
     }
 
-    private void Shuffle(IList<int> list)
+    public void Shuffle<T>(this IList<T> list)
     {
         int n = list.Count;
         System.Random rng = new System.Random();
@@ -39,7 +39,7 @@ public class Deck : MonoBehaviour
         {
             n--;
             int k = rng.Next(n + 1);
-            int value = list[k];
+            T value = list[k];
             list[k] = list[n];
             list[n] = value;
         }
