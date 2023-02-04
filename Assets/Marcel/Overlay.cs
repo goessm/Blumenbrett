@@ -37,6 +37,7 @@ public class Overlay : MonoBehaviour
     {
         if (!isInSelection)
         {
+            transform.position = new Vector3(0, -10, 0);
             isInSelection = true;
             PlaceCards(deck.DrawCards(5));
             transform.DOMoveY(0f,1).SetEase(Ease.OutQuad);
@@ -52,7 +53,6 @@ public class Overlay : MonoBehaviour
                 Destroy(positions[i].transform.GetChild(0).gameObject);
             }
         }
-        transform.position = new Vector3(0, -10, 0);
     }
 
     public void PlaceCards(List<GameObject> cards)
