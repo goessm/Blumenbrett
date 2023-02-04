@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Yellow Flower
   m_EditorClassIdentifier: 
   flowerType: 1
-  flowerTile: {fileID: 11400000, guid: 49b0de641e2b3eb4081e9aeea9f6b9b5, type: 2}
+  flowerTile: {fileID: 11400000, guid: f90edcdcaf3b702488450df356727d82, type: 2}
   value: 1

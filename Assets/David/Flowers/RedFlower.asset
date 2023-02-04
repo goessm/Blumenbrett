@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RedFlower
   m_EditorClassIdentifier: 
   flowerType: 3
-  flowerTile: {fileID: 11400000, guid: 49b0de641e2b3eb4081e9aeea9f6b9b5, type: 2}
+  flowerTile: {fileID: 11400000, guid: d130c459b99011d44ac338ee855c1058, type: 2}
   value: 2

@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Board
 {
-    public const int BoardWidth = 4;
-    public const int BoardLength = 4;
+    public const int BoardWidth = 13;
+    public const int BoardLength = 7;
     public Dictionary<Vector2Int, TileData> board = new Dictionary<Vector2Int, TileData>();
 
     public bool IsInBounds(Vector2Int pos)

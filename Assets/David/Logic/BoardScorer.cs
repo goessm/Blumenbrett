@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardScorer : MonoBehaviour
+public static class BoardScorer
 {
-    // Start is called before the first frame update
-    void Start()
+    public static void ScoreBoard(Board board)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

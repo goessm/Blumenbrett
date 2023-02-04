@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedRoot
   m_EditorClassIdentifier: 
   rootType: 2
-  rootTile: {fileID: 11400000, guid: 942e176d9d96d2d4c8d143ad50df9752, type: 2}
+  rootTile: {fileID: 11400000, guid: 75108ac9672c99b488896c4c0d0100d8, type: 2}
   flowerType: 3
   spreadChance: 0
   spreadDirections: []
