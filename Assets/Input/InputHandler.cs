@@ -35,6 +35,7 @@ public class InputHandler : MonoBehaviour
             //Debug.Log(tilePos);
             
             TileManager.Instance.PlantRoot(RootType.Yellow, (Vector2Int) tilePos);
+            TileManager.Instance.SpreadRoots();
         }
     }
 }

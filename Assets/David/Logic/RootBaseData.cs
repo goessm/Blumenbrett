@@ -16,7 +16,7 @@ public class RootBaseData: ScriptableObject
     public TileBase rootTile;
 
     public float spreadChance;
-    public Vector2[] spreadDirections;
+    public Vector2Int[] spreadDirections;
 
     public int maxAge;
 

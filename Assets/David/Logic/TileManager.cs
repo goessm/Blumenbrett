@@ -17,6 +17,7 @@ public class TileManager : MonoBehaviour
         { 
             Instance = this;
             InitRootBases();
+            InitBoard();
         } 
     }
 
@@ -24,6 +25,17 @@ public class TileManager : MonoBehaviour
     {
         rootBases = new Dictionary<RootType, RootBaseData>();
         rootBases[RootType.Yellow] = rootBaseList[0];
+    }
+
+    private void InitBoard()
+    {
+        for (int i = 0; i < BoardWidth; i++)
+        {
+            for (int j = 0; j < BoardLength; j++)
+            {
+                board.Add(new Vector2Int(i, j), new TileData());
+            }
+        }
     }
 
     public const int BoardWidth = 4;
@@ -40,16 +52,9 @@ public class TileManager : MonoBehaviour
     Tilemap rootTilemap;
 
     [SerializeField]
-    Dictionary<Vector2, TileData> board = new Dictionary<Vector2, TileData>
-    {
-        {new Vector2(0, 0), new TileData()},
-        {new Vector2(0, 1), new TileData()},
-        {new Vector2(0, 2), new TileData()},
-        {new Vector2(0, 3), new TileData()},
-        {new Vector2(0, 4), new TileData()},
-    };
+    Dictionary<Vector2Int, TileData> board = new Dictionary<Vector2Int, TileData>();
 
-    public bool IsInBounds(Vector2 pos)
+    public bool IsInBounds(Vector2Int pos)
     {
         return (pos.x <= BoardWidth && pos.y <= BoardLength);
     }
@@ -57,7 +62,7 @@ public class TileManager : MonoBehaviour
     {
         return new RootData(rootBases[type]);
     }
-    public bool PlantRoot(RootType type, Vector2 pos, bool automatic = false)
+    public bool PlantRoot(RootType type, Vector2Int pos, bool automatic = false)
     {
         Debug.Log($"Trying to plant {type} at {pos}");
         if (!board.ContainsKey(pos)) return false;
@@ -71,25 +76,32 @@ public class TileManager : MonoBehaviour
         }
         RootData rootData = GetDefaultRootData(type);
         tileData.roots.Add(type, rootData);
-        // Bro why do 2D tilemaps use Vector3Int bro pls
-        rootTilemap.SetTile(new Vector3Int((int) pos.x, (int) pos.y, 0), rootData.rootTile);
+        rootTilemap.SetTile((Vector3Int) pos, rootData.rootTile);
         return true;
 
     }
 
     public void SpreadRoots() {
-        foreach(Vector2 pos in board.Keys)
+        List<GrowthResult> growthResults = new();
+        
+        foreach(Vector2Int pos in board.Keys)
         {
             TileData tileData = board[pos];
             foreach(RootType rootType in tileData.roots.Keys)
             {
-                GrowAttempt(pos, rootType);
+                GrowAttempt(pos, rootType, ref growthResults);
             }
+        }
+
+        foreach(GrowthResult res in growthResults)
+        {
+            PlantRoot(res.type, res.pos, true);
         }
     }
 
-    private void GrowAttempt(Vector2 pos, RootType rootType)
+    private void GrowAttempt(Vector2Int pos, RootType rootType, ref List<GrowthResult> growthResults)
     {
+        Debug.Log($"Growth attempt of {rootType} at {pos}");
         if (!board.ContainsKey(pos))
         {
             Debug.Log($"Error in growth attempt. No data at pos {pos}");
@@ -107,18 +119,28 @@ public class TileManager : MonoBehaviour
         RootData rootData = tile.roots[rootType];
         if (rootData.spreadChance >= Random.Range(0f, 1f))
         {
-            GrowRoot(pos, rootData);
+            GrowRoot(pos, rootData, ref growthResults);
         }
     }
 
-    private void GrowRoot(Vector2 pos, RootData rootData)
+    private void GrowRoot(Vector2Int pos, RootData rootData, ref List<GrowthResult> growthResults)
     {
-        Vector2[] spreadDirections = rootData.spreadDirections;
+        Vector2Int[] spreadDirections = rootData.spreadDirections;
         if (spreadDirections.Length == 0) return;
-        Vector2 growDir = spreadDirections[Random.Range(0, spreadDirections.Length)];
-        Vector2 targetPos = pos + growDir;
-        PlantRoot(rootData.rootType, targetPos, true);
+        Vector2Int growDir = spreadDirections[Random.Range(0, spreadDirections.Length)];
+        Vector2Int targetPos = pos + growDir;
+        Debug.Log($"Growing root {rootData.rootType}from {pos} to {targetPos}");
+        GrowthResult result = new();
+        result.pos = targetPos;
+        result.type = rootData.rootType;
+        growthResults.Add(result);
     }
+}
+
+public class GrowthResult
+{
+    public Vector2Int pos;
+    public RootType type;
 }
 
 public class TileData
