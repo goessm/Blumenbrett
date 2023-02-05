@@ -38,6 +38,7 @@ public class GameLoop : MonoBehaviour
     public Overlay CardOverlay;
 
     public int score = 0;
+    public int roundScore = 0;
 
     public ParticleSystem rain;
 
@@ -69,6 +70,7 @@ public class GameLoop : MonoBehaviour
 
     private IEnumerator StartGrowing()
     {
+        roundScore = 0;
         rain.Play();
         yield return new WaitForSeconds(1);
         TileManager.Instance.SpreadRoots();

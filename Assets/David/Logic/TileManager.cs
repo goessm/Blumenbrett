@@ -125,6 +125,7 @@ public class TileManager : MonoBehaviour
                 worldPos.z = -4;
                 ParticleSystem particle = Instantiate(coinParticle, worldPos, Quaternion.Euler(-90, 0, 0));
                 GameLoop.Instance.score += i;
+                GameLoop.Instance.roundScore += i;
                 particle.emissionRate = i + 1;
             }
         }
