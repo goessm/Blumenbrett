@@ -25,8 +25,4 @@ public class FlowerInfo
 {
     public FlowerType type;
     public FlowerData flowerData;
-    public FlowerData GetDefaultFlowerData()
-    {
-        return new FlowerData(flowerData);
-    }
 }

@@ -15,23 +15,24 @@ public class Board
     }
     
     public RootData GetRootAt(Vector2Int pos) {
-        if (!IsInBounds(pos) && !board.ContainsKey(pos)) return null;
+        if (!IsInBounds(pos) || !board.ContainsKey(pos)) return null;
         return board[pos].root;
     }
 
     public void SetRootAt(Vector2Int pos, RootData root) {
-        if (!IsInBounds(pos) && !board.ContainsKey(pos)) return;
+        if (!IsInBounds(pos) || !board.ContainsKey(pos)) return;
         board[pos].root = root;
     }
 
     public FlowerData GetFlowerAt(Vector2Int pos)
     {
-        if (!IsInBounds(pos) && !board.ContainsKey(pos)) return null;
+        if (!IsInBounds(pos) || !board.ContainsKey(pos)) return null;
         return board[pos].flower;
     }
 
     public void SetFlowerAt(Vector2Int pos, FlowerData flower) {
-        if (!IsInBounds(pos) && !board.ContainsKey(pos)) return;
+        Debug.Log($"Setting flower at {pos} to {flower}");
+        if (!IsInBounds(pos) || !board.ContainsKey(pos)) return;
         board[pos].flower = flower;
     }
 

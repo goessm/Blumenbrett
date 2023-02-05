@@ -13,9 +13,15 @@ public class TileManager : MonoBehaviour
 
     [SerializeField]
     public Tilemap rootTilemap;
+
+    [SerializeField]
+    public Tilemap flowerTilemap;
     
     [SerializeField]
     public Board board = new Board();
+
+    public ParticleSystem growParticle;
+    public ParticleSystem coinParticle;
 
     public static TileManager Instance { get; private set; }
     private void Awake() 
@@ -38,7 +44,9 @@ public class TileManager : MonoBehaviour
 
         RootData rootData = rootManager.GetRootInfo(type)?.GetDefaultRootData();
         board.SetRootAt(pos, rootData);
+        board.SetFlowerAt(pos, null);
         RedrawTilemap();
+        Instantiate(growParticle, rootTilemap.CellToWorld((Vector3Int) pos) + rootTilemap.cellSize / 2, Quaternion.identity);
         if (!automatic)
         {
             GameLoop.Instance.gameState = GameState.RAIN_PLS;
@@ -55,6 +63,12 @@ public class TileManager : MonoBehaviour
             TileBase rootTile = board.GetRootAt(pos)?.rootTile;
             if (!rootTile) continue;
             rootTilemap.SetTile((Vector3Int) pos, rootTile);
+
+            TileBase flowerTile = board.GetFlowerAt(pos)?.flowerTile;
+            if (!flowerTile) {
+                flowerTilemap.SetTile((Vector3Int) pos, null);
+            }
+            flowerTilemap.SetTile((Vector3Int) pos, flowerTile);
         }
     }
 
@@ -79,8 +93,42 @@ public class TileManager : MonoBehaviour
             RootData root = board.GetRootAt(pos);
             if (root == null) continue;
             FlowerType flowerType = root.flowerType;
-            board.SetFlowerAt(pos, flowerManager.GetFlowerInfo(flowerType).GetDefaultFlowerData());
+            board.SetFlowerAt(pos, flowerManager.GetFlowerInfo(flowerType).flowerData);
+            RedrawTilemap();
         }
+    }
+
+    public IEnumerator ScoreFlowers()
+    {
+        Dictionary<int, List<Vector2Int>> scores = new Dictionary<int, List<Vector2Int>>();
+        foreach(Vector2Int pos in board.board.Keys)
+        {
+            FlowerData flower = board.GetFlowerAt(pos);
+            if (flower == null) continue;
+            int score = ((int) flower.value);
+            if (!scores.ContainsKey(score))
+            {
+                scores[score] = new List<Vector2Int>();
+            }
+            scores[score].Add(pos);
+        }
+
+        // Handle all scores
+        for (int i = 1; i < 100; i++)
+        {
+            if (!scores.ContainsKey(i)) continue;
+            yield return new WaitForSeconds(1);
+            foreach(Vector2Int pos in scores[i])
+            {
+                Vector3 worldPos = rootTilemap.CellToWorld((Vector3Int) pos) + rootTilemap.cellSize / 2;
+                worldPos.y += rootTilemap.cellSize.y / 2;
+                worldPos.z = -4;
+                ParticleSystem particle = Instantiate(coinParticle, worldPos, Quaternion.Euler(-90, 0, 0));
+                GameLoop.Instance.score += i;
+                particle.emissionRate = i + 1;
+            }
+        }
+        GameLoop.Instance.ProcessState();
     }
 
     private void GrowAttempt(Vector2Int pos, ref List<GrowthResult> growthResults)

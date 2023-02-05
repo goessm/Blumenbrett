@@ -70,8 +70,10 @@ public class GameLoop : MonoBehaviour
         yield return new WaitForSeconds(1);
         TileManager.Instance.SpreadRoots();
         yield return new WaitForSeconds(1);
+        TileManager.Instance.GrowFlowers();
+        yield return new WaitForSeconds(1);
         gameState = GameState.SCORING;
-        ProcessState();
+        StartCoroutine(TileManager.Instance.ScoreFlowers());
     }
 
     private void StartScoring()
