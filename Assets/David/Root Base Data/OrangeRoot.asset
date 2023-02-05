@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cb2530aa625e2942b6128e639870d5c, type: 3}
-  m_Name: PurpleFlower
+  m_Script: {fileID: 11500000, guid: 9e278806996187b419b9c6a14c6f6b8e, type: 3}
+  m_Name: OrangeRoot
   m_EditorClassIdentifier: 
-  flowerType: 3
-  flowerTile: {fileID: 11400000, guid: 63d0f1d569334ac41aaad144502258da, type: 2}
-  value: 2
+  rootType: 5
+  rootTile: {fileID: 11400000, guid: 144bfd3db83eda54a855dcc308b87d22, type: 2}
+  flowerType: 5
+  spreadChance: 0
+  spreadDirections: []
+  fusions: []
+  maxAge: 0

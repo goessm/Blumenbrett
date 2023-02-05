@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 27ad9809b9d50af4384e2e5ed4355b88, type: 3}
     - target: {fileID: 1202177764712057352, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_text
-      value: Grows root randomly vertically next to it if there isn't a flower.
+      value: Grows vertically
       objectReference: {fileID: 0}
     - target: {fileID: 1202177764712057352, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_fontSize
-      value: 1.05
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1202177765213234357, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_RootOrder

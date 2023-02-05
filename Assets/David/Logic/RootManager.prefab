@@ -53,3 +53,7 @@ MonoBehaviour:
     rootBase: {fileID: 11400000, guid: 952ffa2ed8c578f4e9252f3fe537ccfa, type: 2}
   - type: 3
     rootBase: {fileID: 11400000, guid: 3674f5180747f4b4099236bc1ef90c36, type: 2}
+  - type: 4
+    rootBase: {fileID: 11400000, guid: 460736f54e166c14a8ad0b6f636395b9, type: 2}
+  - type: 5
+    rootBase: {fileID: 11400000, guid: f2c99dc147cb01443821f221d404bbd7, type: 2}

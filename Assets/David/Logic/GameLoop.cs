@@ -39,6 +39,8 @@ public class GameLoop : MonoBehaviour
 
     public int score = 0;
 
+    public ParticleSystem rain;
+
     public void ProcessState()
     {
         switch (gameState)
@@ -67,11 +69,12 @@ public class GameLoop : MonoBehaviour
 
     private IEnumerator StartGrowing()
     {
+        rain.Play();
         yield return new WaitForSeconds(1);
         TileManager.Instance.SpreadRoots();
         yield return new WaitForSeconds(1);
         TileManager.Instance.GrowFlowers();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         gameState = GameState.SCORING;
         StartCoroutine(TileManager.Instance.ScoreFlowers());
     }

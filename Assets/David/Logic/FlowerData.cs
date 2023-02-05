@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public enum FlowerType
 {
-    Yellow, Blue, Red, Purple
+    Yellow, Blue, Red, Purple, Green, Orange
 }
 
 [CreateAssetMenu]

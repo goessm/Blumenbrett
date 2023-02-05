@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cb2530aa625e2942b6128e639870d5c, type: 3}
-  m_Name: PurpleFlower
+  m_Name: OrangeFlower
   m_EditorClassIdentifier: 
-  flowerType: 3
-  flowerTile: {fileID: 11400000, guid: 63d0f1d569334ac41aaad144502258da, type: 2}
+  flowerType: 5
+  flowerTile: {fileID: 11400000, guid: 19e402e450d41f04f9941c6bd509f4f9, type: 2}
   value: 2

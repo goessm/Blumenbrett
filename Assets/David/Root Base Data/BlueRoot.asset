@@ -15,9 +15,13 @@ MonoBehaviour:
   rootType: 1
   rootTile: {fileID: 11400000, guid: d5183309432406148838abfc9d0b7541, type: 2}
   flowerType: 1
-  spreadChance: 0
-  spreadDirections: []
+  spreadChance: 0.25
+  spreadDirections:
+  - {x: -1, y: 0}
+  - {x: 1, y: 0}
   fusions:
+  - FusionPartner: 2
+    Result: 3
   - FusionPartner: 0
-    Result: 2
+    Result: 4
   maxAge: 0

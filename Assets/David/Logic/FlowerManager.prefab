@@ -53,3 +53,7 @@ MonoBehaviour:
     flowerData: {fileID: 11400000, guid: dae9c75290f845a4dacdcdb84199376b, type: 2}
   - type: 3
     flowerData: {fileID: 11400000, guid: 32bad5543663db146b6f82cccd93c842, type: 2}
+  - type: 4
+    flowerData: {fileID: 11400000, guid: 6754cb2ea3bdd874abc44f26fec0eab3, type: 2}
+  - type: 5
+    flowerData: {fileID: 11400000, guid: 7d0a52692b5ff6746b4a47bdac1ab258, type: 2}
