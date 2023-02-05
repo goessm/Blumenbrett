@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OrangeRoot
   m_EditorClassIdentifier: 
   rootType: 5
-  rootTile: {fileID: 11400000, guid: 144bfd3db83eda54a855dcc308b87d22, type: 2}
+  rootTile: {fileID: 11400000, guid: 71f82e6d658effe4cafc0e5068af3e3a, type: 2}
   flowerType: 5
   spreadChance: 0
   spreadDirections: []

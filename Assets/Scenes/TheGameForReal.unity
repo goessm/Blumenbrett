@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1225,6 +1225,14 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7219364961546118046, guid: cf6ec8dbbcd9b8644bbdc476c005572c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219364961546118046, guid: cf6ec8dbbcd9b8644bbdc476c005572c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219364961546118046, guid: cf6ec8dbbcd9b8644bbdc476c005572c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1542,11 +1550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2167165410966236870, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 112.859375
+      value: 124.7252
       objectReference: {fileID: 0}
     - target: {fileID: 2167165410966236870, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 61.777298
+      value: 124.8816
       objectReference: {fileID: 0}
     - target: {fileID: 2167165410966236870, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1578,11 +1586,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2167165410966236870, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -78
+      value: -75.3
       objectReference: {fileID: 0}
     - target: {fileID: 2167165410966236870, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 54
+      value: 68.8
       objectReference: {fileID: 0}
     - target: {fileID: 2167165410966236870, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1600,6 +1608,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RainButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2167165410966236872, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167165410966236872, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c8da74a18bb76ad4ebe4f9246826a4fa, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dd4dac2bed300143b9b8dda8c3005a8, type: 3}
 --- !u!1001 &2537051359438678674
