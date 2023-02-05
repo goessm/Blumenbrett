@@ -7,7 +7,7 @@ public enum GameState
 {
     SELECTING,
     PLANTING,
-    WAITINGFORRAIN,
+    RAIN_PLS,
     GROWING,
     SCORING
 }
@@ -37,6 +37,8 @@ public class GameLoop : MonoBehaviour
 
     public Overlay CardOverlay;
 
+    public int score = 0;
+
     public void ProcessState()
     {
         switch (gameState)
@@ -57,10 +59,8 @@ public class GameLoop : MonoBehaviour
             StartScoring();
             Debug.Log("Processing SCORING");
             break;  
-        case GameState.WAITINGFORRAIN:
-            // TODO
-            gameState = GameState.GROWING;
-            ProcessState();
+        case GameState.RAIN_PLS:
+            // Do nothing
             break;
         }
     }

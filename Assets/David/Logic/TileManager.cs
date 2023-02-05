@@ -41,7 +41,7 @@ public class TileManager : MonoBehaviour
         RedrawTilemap();
         if (!automatic)
         {
-            GameLoop.Instance.gameState = GameState.WAITINGFORRAIN;
+            GameLoop.Instance.gameState = GameState.RAIN_PLS;
             GameLoop.Instance.ProcessState();
         }
         return true;
