@@ -39,7 +39,7 @@ public class Overlay : MonoBehaviour
         {
             transform.position = new Vector3(0, -10, 0);
             isInSelection = true;
-            PlaceCards(deck.DrawCards(5));
+            PlaceCards(deck.DrawCards(3));
             transform.DOMoveY(0f,1).SetEase(Ease.OutQuad);
         }
     }
@@ -59,6 +59,7 @@ public class Overlay : MonoBehaviour
     {
         for (int i = 0; i < positions.Length && i < cards.Count; i++)
         {
+            Debug.Log($"Instantiating {cards[i]} at {positions[i].transform}");
             Instantiate(cards[i], positions[i].transform);
         }
     }

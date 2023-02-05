@@ -4,24 +4,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class InputHandler : MonoBehaviour
+public class PlantingInputHandler : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("start");
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnClick(InputAction.CallbackContext context)
     {
+        if (GameLoop.Instance.gameState != GameState.PLANTING)
+        {
+            return;
+        }
         if(context.performed)
         {
             Debug.Log(context);
@@ -30,17 +20,15 @@ public class InputHandler : MonoBehaviour
             Vector3 Worldpos = Camera.main.ScreenToWorldPoint(mousePos);
             //Debug.Log(Worldpos);
 
-            Tilemap tilemap = GameObject.Find("Root Map").GetComponent<Tilemap>();
-            var tilePos = tilemap.WorldToCell(Worldpos);
+            Tilemap rootMap = TileManager.Instance.rootTilemap;
+            var tilePos = rootMap.WorldToCell(Worldpos);
             //Debug.Log(tilePos);
-            RootType rootToPlant = RootType.Yellow;
-            if (Random.Range(0f, 1f) > 0.5)
+            if (!TileManager.Instance.board.IsInBounds((Vector2Int) tilePos))
             {
-                rootToPlant = RootType.Green;
-                Debug.Log("GREEN");
+                return;
             }
+            RootType rootToPlant = GameLoop.Instance.RootToPlant;
             TileManager.Instance.PlantRoot(rootToPlant, (Vector2Int) tilePos);
-            TileManager.Instance.SpreadRoots();
         }
     }
 }

@@ -5,6 +5,7 @@ public class Card : MonoBehaviour
     public delegate void ClickAction();
     public static event ClickAction OnCardClicked;
 
+    public RootType rootType;
     public GameObject rootPrefab;
     public GameObject highlight;
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class Card : MonoBehaviour
         {
             Debug.Log("clicked");
             OnCardClicked();
+            GameLoop.Instance.OnCardSelected(rootType);
         }
     }
 

@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 1.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1202177765213234356, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
+      propertyPath: rootType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1202177765213234357, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -29,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202177765213234357, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1202177765213234357, guid: b6c6a4fd0e7a5f649a70c5a9c6589c6a, type: 3}
       propertyPath: m_LocalRotation.w

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb2530aa625e2942b6128e639870d5c, type: 3}
   m_Name: RedFlower
   m_EditorClassIdentifier: 
-  flowerType: 3
+  flowerType: 2
   flowerTile: {fileID: 11400000, guid: d130c459b99011d44ac338ee855c1058, type: 2}
   value: 2

@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public enum RootType
 {
-    Yellow, Green, Red, Purple
+    Yellow, Blue, Red, Purple
 }
 
 [CreateAssetMenu]

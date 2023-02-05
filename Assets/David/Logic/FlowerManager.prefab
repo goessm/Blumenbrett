@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8821320635920140172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9106586850823588677}
+  - component: {fileID: 5826133440231555918}
+  m_Layer: 0
+  m_Name: FlowerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9106586850823588677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821320635920140172}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.865226, y: 0.68633056, z: 0.32735738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5826133440231555918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821320635920140172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffce6d39fa1b5c4096fd0d4caa824f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerInfos:
+  - type: 0
+    flowerData: {fileID: 11400000, guid: 777e93aba7d912540addd5206045edfb, type: 2}
+  - type: 1
+    flowerData: {fileID: 11400000, guid: a331c64ee2fbd024a982411f9e382190, type: 2}
+  - type: 2
+    flowerData: {fileID: 11400000, guid: dae9c75290f845a4dacdcdb84199376b, type: 2}
+  - type: 3
+    flowerData: {fileID: 11400000, guid: 32bad5543663db146b6f82cccd93c842, type: 2}

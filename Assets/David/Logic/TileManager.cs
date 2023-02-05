@@ -12,10 +12,10 @@ public class TileManager : MonoBehaviour
     FlowerManager flowerManager;
 
     [SerializeField]
-    Tilemap rootTilemap;
+    public Tilemap rootTilemap;
     
     [SerializeField]
-    Board board = new Board();
+    public Board board = new Board();
 
     public static TileManager Instance { get; private set; }
     private void Awake() 
@@ -39,6 +39,11 @@ public class TileManager : MonoBehaviour
         RootData rootData = rootManager.GetRootInfo(type)?.GetDefaultRootData();
         board.SetRootAt(pos, rootData);
         RedrawTilemap();
+        if (!automatic)
+        {
+            GameLoop.Instance.gameState = GameState.WAITINGFORRAIN;
+            GameLoop.Instance.ProcessState();
+        }
         return true;
 
     }
