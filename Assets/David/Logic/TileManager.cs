@@ -126,7 +126,8 @@ public class TileManager : MonoBehaviour
                 ParticleSystem particle = Instantiate(coinParticle, worldPos, Quaternion.Euler(-90, 0, 0));
                 GameLoop.Instance.score += i;
                 GameLoop.Instance.roundScore += i;
-                particle.emissionRate = i + 1;
+                ParticleSystem.EmissionModule emissionModule = particle.emission;
+                emissionModule.rateOverTime = i + 1;
             }
         }
         GameLoop.Instance.ProcessState();
